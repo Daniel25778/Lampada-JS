@@ -1,39 +1,38 @@
 "use strict"
 
+function botoesLigaDesliga(ligarEstado, desligarEstado) {
+    const ligar = document.getElementById("Ligar")
+    const desligar = document.getElementById("desligar")
+    ligar.disabled = ligarEstado
+    desligar.disabled = desligarEstado
+}
 
 function LigarLampada() {
     const lampada = document.getElementById("Lampada")
-    const ligar = document.getElementById("Ligar")
-    const desligar = document.getElementById("desligar")
 
     if (!lampadaQuebrada()) {
         lampada.src = "img/ligada.jpg"
-        ligar.disabled = true
-        desligar.disabled = false
+        botoesLigaDesliga(true, false)
+
     }
 
 }
 
 function DesligarLampada() {
     const lampada = document.getElementById("Lampada")
-    const ligar = document.getElementById("Ligar")
-    const desligar = document.getElementById("desligar")
 
     if (!lampadaQuebrada()) {
         lampada.src = "img/desligada.jpg"
-        ligar.disabled = false
-        desligar.disabled = true
+        botoesLigaDesliga(false, true)
     }
 
 }
 
 function quebrarLampada() {
     const lampada = document.getElementById("Lampada")
-    const ligar = document.getElementById("Ligar")
-    const desligar = document.getElementById("desligar")
     lampada.src = "img/quebrada.jpg"
-    ligar.disabled = true
-    desligar.disabled = true
+    botoesLigaDesliga(true, true)
+
 
 }
 
