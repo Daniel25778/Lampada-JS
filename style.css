@@ -27,6 +27,7 @@ main {
     align-items: center;
     flex-grow: 1;
     padding-top: 60px;
+    margin-bottom: 200px;
 }
 
 footer {
@@ -39,4 +40,14 @@ button {
     height: 40px;
     width: 100px;
     cursor: pointer;
+}
+
+.piscarLigado {
+    background-color: green;
+    color: white;
+}
+
+.piscarDesligado {
+    color: white;
+    background-color: red;
 }

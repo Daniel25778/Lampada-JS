@@ -3,19 +3,21 @@
 const lampada = document.getElementById("Lampada")
 let idInterval
 
-function botoesLigaDesliga(ligarEstado, desligarEstado) {
+function botoesLigaDesliga(ligarEstado, desligarEstado, piscarEstado) {
 
     const ligar = document.getElementById("Ligar")
     const desligar = document.getElementById("desligar")
+    const piscar = document.getElementById("piscar")
     ligar.disabled = ligarEstado
     desligar.disabled = desligarEstado
+    piscar.disabled = piscarEstado
 
 }
 
 function LigarLampada() {
     if (!lampadaQuebrada()) {
         lampada.src = "img/ligada.jpg"
-        botoesLigaDesliga(true, false)
+        botoesLigaDesliga(true, false, false)
 
     }
 
@@ -24,14 +26,14 @@ function LigarLampada() {
 function DesligarLampada() {
     if (!lampadaQuebrada()) {
         lampada.src = "img/desligada.jpg"
-        botoesLigaDesliga(false, true)
+        botoesLigaDesliga(false, true, false)
     }
 
 }
 
 function quebrarLampada() {
     lampada.src = "img/quebrada.jpg"
-    botoesLigaDesliga(true, true)
+    botoesLigaDesliga(true, true, true)
 
 
 }
@@ -60,14 +62,19 @@ const lampadaQuebrada = () => lampada.src.indexOf("quebrada") !== -1
 
 function piscar() {
     const piscar = document.getElementById("piscar")
-
     if (piscar.textContent == "Piscar") {
+        piscar.classList.add("piscarDesligado")
+        piscar.classList.remove("piscarLigado")
         idInterval = setInterval(trocarImagem, 1000)
         piscar.textContent = "Parar"
     } else {
+
         clearInterval(idInterval)
+        piscar.classList.remove("piscarDesligado")
+        piscar.classList.add("piscarLigado")
         DesligarLampada()
         piscar.textContent = "Piscar"
+
 
     }
 
